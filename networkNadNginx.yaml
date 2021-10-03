@@ -1,0 +1,24 @@
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition 
+metadata:
+  name: nginx-nad 
+spec:
+    additionalNetworks:
+    - name: nginx-nad
+      namespace: default
+      type: Raw 
+      rawCNIConfig: '{
+        "cniVersion": "0.4.0",
+        "name": "nginx-nad",
+        "type": "macvlan",
+        "master": "ens7f0"
+        "ipam": {
+          "type": "static"
+          "addresses": [
+        {
+          "address": "191.168.1.100/24"
+        }
+       ],
+       "gateway": "192.168.1.254"
+      }
+     }'
