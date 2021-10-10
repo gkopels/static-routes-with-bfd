@@ -18,7 +18,7 @@ This command will create a Kubernetes cluster with 2 nodes and a FRR container.
 First you'll need to create a configmap with all the BFD configurations.
 After you cloned this repository, enter:
 
-`k create configmap frr-config --from-file=./configmap/`
+`oc create configmap frr-config --from-file=./configmap/`
 
 The configmap folder includes:
 ```
@@ -30,9 +30,8 @@ configmap
 
 Apply the daemonset yaml:
 
-`k apply -f daemonset.yaml`
-
-The daemonset will inject those files into the etc/frr directory in the FRR pods.
+`oc apply -f pod.yaml`
+.
 
 ## Configure the FRR container
 First, inspect the pod's IP addresses:
